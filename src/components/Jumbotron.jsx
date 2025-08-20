@@ -101,7 +101,7 @@ export default function Jumbotron() {
               />
             )}
             <div className="absolute inset-0 bg-gray-900/60" />
-            <div className="flex-center relative z-10 mx-auto h-full max-w-7xl flex-col px-6 lg:items-start">
+            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 lg:items-start">
               <div className="flex w-full max-w-xl flex-col justify-center md:w-1/2">
                 <motion.p
                   className="text-primary-content mb-2 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
