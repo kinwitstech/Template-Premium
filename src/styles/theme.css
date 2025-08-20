@@ -1,0 +1,147 @@
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+/* Light Theme */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-accent: #f59e42;
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #e5e7eb;
+  --color-neutral: #111827;
+  --color-secondary: #6366f1;
+  --color-success: #10b981;
+  --color-warning: #f59e42;
+  --color-error: #ef4444;
+
+  --color-base-content: oklch(22.389% 0.031 278.072);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: oklch(100% 0 0);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error-content: oklch(0% 0 0);
+
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Dark Theme */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+
+  --color-primary: #60a5fa;
+  --color-primary-dark: #2563eb;
+  --color-accent: #fbbf24;
+  --color-base-100: #18181b;
+  --color-base-200: #27272a;
+  --color-base-300: #3f3f46;
+  --color-neutral: #f3f4f6;
+  --color-secondary: #818cf8;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  --color-base-content: #f3f4f6;
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary-content: oklch(28% 0.091 267.935);
+  --color-accent-content: oklch(25% 0.09 281.288);
+  --color-neutral-content: oklch(98% 0.002 247.839);
+
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: oklch(98% 0.019 200.873);
+  --color-success-content: oklch(98% 0.031 120.757);
+  --color-warning-content: oklch(98% 0.022 95.277);
+  --color-error-content: oklch(97% 0.014 343.198);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
+@theme {
+  --color-primary-dark: #0086c1;
+  --color-secondary-dark: #5a6268;
+  --color-neutral-light: #c5c6cc;
+  --color-neutral-dark: #8f9098;
+
+  --default-font-family: "Inter", system-ui, sans-serif;
+
+  --animate-glow: glow 2s ease-in-out infinite;
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 10px var(--color-primary),
+        0 0 20px var(--color-accent);
+    }
+    50% {
+      box-shadow:
+        0 0 20px var(--color-primary),
+        0 0 40px var(--color-accent);
+    }
+  }
+
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 8px var(--color-primary);
+    }
+    50% {
+      box-shadow: 0 0 16px var(--color-accent);
+    }
+  }
+
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  --swiper-theme-color: var(--color-primary);
+}
