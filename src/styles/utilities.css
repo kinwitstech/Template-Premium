@@ -11,4 +11,153 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
+
+  .custom-divide-x > * + * {
+    position: relative;
+    border-left: none;
+  }
+
+  .custom-divide-x > * + *::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2rem;
+    width: 2px;
+    background-color: var(--color-primary-content);
+    opacity: 0.8;
+  }
+
+  /* Section Layouts */
+  .section-container {
+    @apply container mx-auto;
+  }
+
+  .section-padding {
+    @apply px-6 py-16 md:py-20 lg:py-24;
+  }
+
+  .section-grid {
+    @apply grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-20;
+  }
+
+  .section-flex {
+    @apply flex flex-col items-stretch justify-center;
+  }
+
+  /* Section Headers */
+  .section-badge {
+    @apply text-primary mb-2 tracking-wide uppercase;
+  }
+
+  .section-title {
+    @apply mb-4;
+  }
+
+  .section-description {
+    @apply text-base-content/70 max-w-xl text-lg;
+  }
+
+  .section-header {
+    @apply mb-10;
+  }
+
+  /* Grid Layouts */
+  .grid-1-col {
+    @apply grid grid-cols-1;
+  }
+
+  .grid-2-col {
+    @apply grid grid-cols-1 lg:grid-cols-2;
+  }
+
+  .grid-4-col {
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .grid-gap-default {
+    @apply gap-6;
+  }
+
+  .grid-gap-large {
+    @apply gap-12 lg:gap-20;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300;
+  }
+
+  .btn-primary-sm {
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-6 py-3 text-base font-bold shadow-lg transition duration-300;
+  }
+
+  .services-btn-icon {
+    @apply text-primary/80 hover:bg-primary/80 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-neutral-200 transition hover:text-white;
+  }
+
+  .btn-nav {
+    @apply bg-primary/10 text-primary-content/20 hover:text-primary-content absolute top-1/2 z-20 hidden -translate-y-1/2 rounded-full p-3 shadow-lg focus:ring-0 focus:outline-none lg:flex;
+  }
+
+  .btn-arrow-animation {
+    @apply ml-2 transition-all duration-300 group-hover:translate-x-1 group-hover:animate-pulse;
+  }
+
+  /* Typography */
+  .text-gradient-primary {
+    @apply from-primary to-accent bg-gradient-to-r bg-clip-text text-transparent;
+  }
+
+  .text-heading-large {
+    @apply text-7xl font-bold;
+  }
+
+  .text-heading-medium {
+    @apply text-xl font-semibold;
+  }
+
+  .text-body-large {
+    @apply text-lg leading-relaxed;
+  }
+
+  .text-body-medium {
+    @apply text-base;
+  }
+
+  /* Interactive Elements */
+  .hover-lift {
+    @apply transition-shadow hover:shadow-xl;
+  }
+
+  .hover-scale {
+    @apply transition-transform hover:scale-105;
+  }
+
+  .icon-primary {
+    @apply text-primary h-10 w-10;
+  }
+
+  .icon-primary-sm {
+    @apply text-primary h-5 w-5;
+  }
+
+  /* Card Styles */
+  .card-base {
+    @apply border-neutral/10 relative flex h-full flex-col rounded-xl border p-7 transition-shadow hover:shadow-xl;
+  }
+
+  .card-number {
+    @apply text-base-content/30 group-hover:text-base-content absolute top-6 right-7 text-2xl font-bold select-none;
+  }
+
+  /* Responsive Utilities */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .responsive-flex {
+    @apply flex flex-col lg:flex-row;
+  }
 }

@@ -1,15 +1,15 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const navigation = [
   { name: "Home", to: "/" },
   { name: "About", to: "/about-us" },
-  { name: "FAQ", to: "/" },
-  { name: "Testimonials", to: "/" },
-  { name: "Contact", to: "/" },
+  { name: "FAQ", to: "/faq" },
+  { name: "Testimonials", to: "/testimonials" },
+  { name: "Contact", to: "/contact" },
 ];
 
 function useScrollThreshold(thresholdRatio = 0.8, pathname) {
@@ -68,6 +68,10 @@ const Navbar = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  useEffect(() => {
+    document.body.style.overflow = overlayOpen ? "hidden" : "";
+  }, [overlayOpen]);
+
   const isTransparent = !scrolled && pathname === "/";
   const isScrolled = scrolled || pathname !== "/";
 
@@ -91,19 +95,38 @@ const Navbar = () => {
           </div>
 
           <nav className="hidden flex-1 justify-center space-x-8 font-medium md:flex">
-            {navigation.map((item, idx) => (
-              <Link
-                key={idx}
-                to={item.to}
-                className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
-                  isScrolled
-                    ? "text-base-content hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                    : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item, idx) => {
+              const isActive = pathname === item.to;
+              return (
+                <div key={idx} className="relative flex items-center">
+                  <Link
+                    key={idx}
+                    to={item.to}
+                    className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
+                      isScrolled
+                        ? "text-base-content hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
+                        : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"
+                    } ${isActive ? "font-semibold" : ""}`}
+                  >
+                    {item.name}
+                  </Link>
+                  {isActive && (
+                    <>
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="from-primary to-accent animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                        aria-hidden="true"
+                      />
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           <div className="flex flex-1 items-center justify-end space-x-4">
@@ -128,32 +151,44 @@ const Navbar = () => {
         </div>
 
         {/* Overlay Menu (mobile) */}
-        {overlayOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            className="fixed inset-0 z-50 flex flex-col bg-white p-6"
-          >
-            <button
-              onClick={() => setOverlayOpen(false)}
-              className="mb-6 self-end"
-            >
-              <X className="text-base-content h-6 w-6" />
-            </button>
-            <nav className="text-base-content flex flex-col space-y-6 text-lg font-medium">
-              {navigation.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.to}
-                  onClick={() => setOverlayOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {overlayOpen && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-40 bg-black/50"
+                onClick={() => setOverlayOpen(false)}
+              />
+              <motion.div
+                initial={{ translateX: "100%" }}
+                animate={{ translateX: 0 }}
+                exit={{ translateX: "100%" }}
+                transition={{ type: "tween", duration: 0.3 }}
+                className="fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col bg-white shadow-xl"
+              >
+                <div className="flex items-center justify-end border-b p-4">
+                  <button onClick={() => setOverlayOpen(false)}>
+                    <X className="text-base-content h-6 w-6" />
+                  </button>
+                </div>
+                <nav className="text-base-content flex flex-col space-y-6 p-6 text-lg font-medium">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setOverlayOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </header>
     </>
   );

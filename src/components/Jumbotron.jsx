@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { ReactTyped } from "react-typed";
 import {
@@ -155,11 +155,11 @@ export default function Jumbotron() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="group from-primary/50 to-accent/50 hover:from-accent/80 hover:to-primary/80 text-primary-content w-[12rem] rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition-all duration-300"
+                  className="flex-center group from-primary/50 to-accent/50 hover:from-accent/80 hover:to-primary/80 text-primary-content w-[12rem] rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition-all duration-300"
                 >
-                  Contact Us{" "}
+                  Contact Us
                   <span className="group-hover:text-accent ml-2 transition-all duration-300 group-hover:animate-pulse">
-                    →
+                    <ArrowRight />
                   </span>
                 </motion.button>
               </div>
