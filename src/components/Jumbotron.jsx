@@ -104,7 +104,7 @@ export default function Jumbotron() {
             <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 lg:items-start">
               <div className="flex w-full max-w-xl flex-col justify-center md:w-1/2">
                 <motion.p
-                  className="text-primary-content mb-2 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
+                  className="text-primary mb-4 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
                   initial={{
                     opacity: activeIndex === idx ? 0 : 1,
                     x: activeIndex === idx ? -40 : 0,
@@ -117,48 +117,46 @@ export default function Jumbotron() {
                 >
                   {slide.subtitle}
                 </motion.p>
-                <motion.div
+                <motion.h1
                   initial={{
                     opacity: activeIndex === idx ? 0 : 1,
-                    x: activeIndex === idx ? -40 : 0,
+                    x: activeIndex === idx ? -70 : 0,
                   }}
                   animate={{
                     opacity: activeIndex === idx ? 1 : 0,
-                    x: activeIndex === idx ? 0 : -40,
+                    x: activeIndex === idx ? 0 : -70,
                   }}
-                  transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
-                  className="max-w-xl"
+                  transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+                  className="from-primary to-accent mb-6 max-w-xl bg-gradient-to-r bg-clip-text leading-tight font-extrabold text-transparent drop-shadow-2xl md:text-7xl"
                 >
-                  <h2 className="from-primary to-accent mb-4 bg-gradient-to-r bg-clip-text leading-tight font-extrabold text-transparent drop-shadow-2xl md:text-7xl">
-                    <ReactTyped
-                      strings={slide.title}
-                      typeSpeed={100}
-                      backSpeed={50}
-                      loop
-                    />
-                  </h2>
-                </motion.div>
-                <motion.p
-                  className="text-primary-content mb-8 text-lg font-medium text-balance drop-shadow md:text-xl"
+                  <ReactTyped
+                    strings={slide.title}
+                    typeSpeed={125}
+                    backSpeed={75}
+                    loop
+                  />
+                </motion.h1>
+                <motion.div
+                  className="text-primary-content mb-10 leading-relaxed font-medium tracking-widest drop-shadow"
                   initial={{
                     opacity: activeIndex === idx ? 0 : 1,
-                    x: activeIndex === idx ? -40 : 0,
+                    x: activeIndex === idx ? -90 : 0,
                   }}
                   animate={{
                     opacity: activeIndex === idx ? 1 : 0,
-                    x: activeIndex === idx ? 0 : -40,
+                    x: activeIndex === idx ? 0 : -90,
                   }}
-                  transition={{ duration: 0.9, delay: 0.3, ease: "easeInOut" }}
+                  transition={{ duration: 0.9, delay: 0.5, ease: "easeInOut" }}
                 >
                   {slide.description}
-                </motion.p>
+                </motion.div>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-center group from-primary/50 to-accent/50 hover:from-accent/80 hover:to-primary/80 text-primary-content w-[12rem] rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition-all duration-300"
+                  className="flex-center group btn-primary w-[14rem]"
                 >
-                  Contact Us
-                  <span className="group-hover:text-accent ml-2 transition-all duration-300 group-hover:animate-pulse">
+                  Learn More
+                  <span className="btn-arrow-animation">
                     <ArrowRight />
                   </span>
                 </motion.button>

@@ -86,11 +86,11 @@
 
   /* Buttons */
   .btn-primary {
-    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300;
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300 cursor-pointer;
   }
 
   .btn-primary-sm {
-    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-6 py-3 text-base font-bold shadow-lg transition duration-300;
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-6 py-3 text-base font-bold shadow-lg transition duration-300 cursor-pointer;
   }
 
   .services-btn-icon {
@@ -159,5 +159,13 @@
 
   .responsive-flex {
     @apply flex flex-col lg:flex-row;
+  }
+
+  .input-default {
+    @apply focus:ring-primary/30 border-base-content/15 w-full rounded-lg border p-3 focus:ring-2 focus:outline-none
+  }
+
+  .error-msg {
+    @apply text-error mt-1 text-sm;
   }
 }

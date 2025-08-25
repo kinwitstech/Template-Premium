@@ -42,7 +42,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-primary/10 w-full">
+    <section className="w-full">
       <div className="section-container section-padding responsive-flex gap-8">
         <div className="lg:w-1/3">
           <p className="section-badge">FAQ</p>

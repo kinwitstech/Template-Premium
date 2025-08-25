@@ -9,7 +9,7 @@ const OurProcessSection = () => {
   });
 
   return (
-    <section ref={ref} className="bg-primary/10 w-full">
+    <section ref={ref} className="bg-primary/5 w-full">
       <div className="section-container section-padding section-flex">
         <div className="mb-10 text-left">
           <p className="section-badge">Our Process</p>

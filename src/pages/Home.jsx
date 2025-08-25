@@ -1,9 +1,10 @@
 import AboutUsSection from "@/components/AboutUsSection";
+import ContactSection from "@/components/ContactUsSection";
 import FAQSection from "@/components/Faq";
 import Jumbotron from "@/components/Jumbotron";
 import OurProcessSection from "@/components/OurProcessSection";
 import ServicesSection from "@/components/ServicesSection";
-import Testimonials from "@/components/Testimonials";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -12,8 +13,9 @@ export default function Home() {
       <AboutUsSection />
       <OurProcessSection />
       <ServicesSection />
+      <TestimonialsSection />
       <FAQSection />
-      <Testimonials />
+      <ContactSection />
     </main>
   );
 }

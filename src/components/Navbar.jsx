@@ -149,47 +149,47 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-
-        {/* Overlay Menu (mobile) */}
-        <AnimatePresence>
-          {overlayOpen && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-black/50"
-                onClick={() => setOverlayOpen(false)}
-              />
-              <motion.div
-                initial={{ translateX: "100%" }}
-                animate={{ translateX: 0 }}
-                exit={{ translateX: "100%" }}
-                transition={{ type: "tween", duration: 0.3 }}
-                className="fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col bg-white shadow-xl"
-              >
-                <div className="flex items-center justify-end border-b p-4">
-                  <button onClick={() => setOverlayOpen(false)}>
-                    <X className="text-base-content h-6 w-6" />
-                  </button>
-                </div>
-                <nav className="text-base-content flex flex-col space-y-6 p-6 text-lg font-medium">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setOverlayOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Overlay Menu (mobile, tablet) */}
+      <AnimatePresence>
+        {overlayOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/50"
+              onClick={() => setOverlayOpen(false)}
+            />
+            <motion.div
+              initial={{ translateX: "100%" }}
+              animate={{ translateX: 0 }}
+              exit={{ translateX: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+              className="bg-base-100 fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col shadow-xl"
+            >
+              <div className="flex items-center justify-end border-b p-4">
+                <button onClick={() => setOverlayOpen(false)}>
+                  <X className="text-base-content h-6 w-6" />
+                </button>
+              </div>
+              <nav className="text-base-content flex flex-col space-y-6 p-6 text-lg font-medium">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOverlayOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
