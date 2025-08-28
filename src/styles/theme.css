@@ -91,7 +91,8 @@
   --color-secondary-dark: #5a6268;
   --color-neutral-light: #c5c6cc;
   --color-neutral-dark: #8f9098;
-
+  --color-light: oklch(100% 0 0);
+  --color-footer: #091122;
   --default-font-family: "Inter", system-ui, sans-serif;
 
   --animate-glow: glow 2s ease-in-out infinite;

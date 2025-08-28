@@ -28,7 +28,7 @@ const Layout = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="group from-primary to-accent fixed right-8 bottom-8 z-50 animate-pulse rounded-full bg-gradient-to-r p-3 text-white opacity-70 shadow-[0_0_20px_rgba(59,130,246,0.7)] hover:opacity-100 hover:shadow-none"
+          className="group from-primary to-accent text-light fixed right-8 bottom-8 z-50 animate-pulse rounded-full bg-gradient-to-r p-3 opacity-70 shadow-[0_0_20px_rgba(59,130,246,0.7)] hover:opacity-100 hover:shadow-none"
           aria-label="Scroll to top"
         >
           <span className="group-hover:animate-flip-once block">

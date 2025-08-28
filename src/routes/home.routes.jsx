@@ -23,4 +23,10 @@ export const aboutUsRoute = createRoute({
   component: AboutUs,
 });
 
-homeLayoutRoute.addChildren([homeIndexRoute, aboutUsRoute]);
+export const portfolioRoute = createRoute({
+  path: "/portfolio",
+  getParentRoute: () => homeLayoutRoute,
+  component: AboutUs,
+});
+
+homeLayoutRoute.addChildren([homeIndexRoute, aboutUsRoute, portfolioRoute]);

@@ -4,9 +4,28 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import NavDropdownMenu from "./NavDropdown";
+import { isNavItemActive } from "@/common/utils";
+
 const navigation = [
   { name: "Home", to: "/" },
-  { name: "About", to: "/about-us" },
+  {
+    name: "Pages",
+    type: "dropdown",
+    items: [
+      { label: "About Us", to: "/about-us" },
+      { label: "Contact Us", to: "/contact-us" },
+      {
+        label: "Portfolio Grid More",
+        type: "flyout",
+        items: [
+          { label: "Portfolio", to: "/portfolio" },
+          { label: "Portfolio Grid 3", to: "/portfolio-grid-3" },
+          { label: "Portfolio Grid 4", to: "/portfolio-grid-4" },
+        ],
+      },
+    ],
+  },
   { name: "FAQ", to: "/faq" },
   { name: "Testimonials", to: "/testimonials" },
   { name: "Contact", to: "/contact" },
@@ -96,35 +115,47 @@ const Navbar = () => {
 
           <nav className="hidden flex-1 justify-center space-x-8 font-medium md:flex">
             {navigation.map((item, idx) => {
-              const isActive = pathname === item.to;
+              const isActive = isNavItemActive(item, pathname);
               return (
-                <div key={idx} className="relative flex items-center">
-                  <Link
-                    key={idx}
-                    to={item.to}
-                    className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
-                      isScrolled
-                        ? "text-base-content hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                        : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"
-                    } ${isActive ? "font-semibold" : ""}`}
-                  >
-                    {item.name}
-                  </Link>
-                  {isActive && (
-                    <>
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="from-primary to-accent animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
-                        transition={{
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 30,
-                        }}
-                        aria-hidden="true"
-                      />
-                    </>
+                <>
+                  {item.type === "dropdown" ? (
+                    <NavDropdownMenu
+                      key={idx}
+                      label={item.name}
+                      items={item.items}
+                      isScrolled={isScrolled}
+                      isActive={isActive}
+                    />
+                  ) : (
+                    <div key={idx} className="relative flex items-center">
+                      <Link
+                        key={idx}
+                        to={item.to}
+                        className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
+                          isScrolled
+                            ? "text-base-content hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
+                            : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"
+                        } ${isActive ? "font-semibold" : ""}`}
+                      >
+                        {item.name}
+                      </Link>
+                      {isActive && (
+                        <>
+                          <motion.span
+                            layoutId="nav-underline"
+                            className="from-primary to-accent animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
+                            transition={{
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 30,
+                            }}
+                            aria-hidden="true"
+                          />
+                        </>
+                      )}
+                    </div>
                   )}
-                </div>
+                </>
               );
             })}
           </nav>
