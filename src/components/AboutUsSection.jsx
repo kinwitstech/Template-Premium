@@ -33,7 +33,7 @@ const FeatureSection = () => {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="flex-center group border-base-content/10 flex-col border-r px-4 last:border-r-0"
+              className="flex-center group border-base-content/10 flex-col px-4 last:border-r-0 lg:border-r"
             >
               <span className="group-hover:animate-flip-once">
                 {feature.icon}

@@ -117,7 +117,7 @@ const Navbar = () => {
             {navigation.map((item, idx) => {
               const isActive = isNavItemActive(item, pathname);
               return (
-                <>
+                <div key={idx}>
                   {item.type === "dropdown" ? (
                     <NavDropdownMenu
                       key={idx}
@@ -129,7 +129,6 @@ const Navbar = () => {
                   ) : (
                     <div key={idx} className="relative flex items-center">
                       <Link
-                        key={idx}
                         to={item.to}
                         className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
                           isScrolled
@@ -155,7 +154,7 @@ const Navbar = () => {
                       )}
                     </div>
                   )}
-                </>
+                </div>
               );
             })}
           </nav>

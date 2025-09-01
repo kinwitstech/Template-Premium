@@ -13,7 +13,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="bg-primary/5 w-full" id="contact">
+    <section className="w-full" id="contact">
       <div className="section-container section-padding grid grid-cols-1 gap-8 px-4 md:grid-cols-2">
         <div className="relative">
           <iframe
