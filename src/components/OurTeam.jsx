@@ -11,8 +11,6 @@ import {
 import { useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const team = [
   { name: "James Garcia", role: "Finance Director" },
@@ -74,7 +72,7 @@ function TeamCard({ m }) {
 
 export default function OurTeamSection() {
   return (
-    <section className="w-full">
+    <section id="our-team" className="w-full">
       <div className="section-container section-padding">
         <div className="mb-8 flex flex-wrap justify-between gap-6">
           <div className="max-w-3xl">

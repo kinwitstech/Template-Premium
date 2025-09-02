@@ -111,7 +111,6 @@ function DropdownItem({ to, label }) {
         to={to}
         className="group relative flex items-center px-4 py-2 transition-all"
       >
-        {/* Left indicator */}
         <span
           className={`bg-primary ring-primary/20 absolute left-2 block h-1 w-3 rounded-full ring-4 transition-all duration-200 ${isActive ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"} `}
         />

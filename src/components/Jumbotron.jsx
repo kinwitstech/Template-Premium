@@ -66,7 +66,7 @@ export default function Jumbotron() {
           dynamicBullets: true,
           clickable: true,
         }}
-        autoplay={{ delay: 30000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         effect="fade"
         keyboard={{ enabled: true, onlyInViewport: true }}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
