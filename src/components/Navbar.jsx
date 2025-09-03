@@ -26,6 +26,7 @@ const navigation = [
       },
     ],
   },
+  { name: "Blog", to: "/blog" },
   { name: "FAQ", to: "/faq" },
   { name: "Testimonials", to: "/testimonials" },
   { name: "Contact", to: "/contact" },
