@@ -1,16 +1,24 @@
 import { Link, useLocation } from "@tanstack/react-router";
 
-const PageHeader = ({ title }) => {
+const PageHeader = ({ title, customName = false }) => {
   const { pathname } = useLocation();
 
   const pathParts = pathname.split("/").filter(Boolean);
-  const crumbs = [
+
+  let crumbs = [
     { name: "Home", to: "/" },
     ...pathParts.map((part, idx) => ({
-      name: title,
+      name: part.charAt(0).toUpperCase() + part.slice(1),
       to: "/" + pathParts.slice(0, idx + 1).join("/"),
     })),
   ];
+
+  if (customName && crumbs.length > 1) {
+    crumbs[crumbs.length - 1] = {
+      ...crumbs[crumbs.length - 1],
+      name: title,
+    };
+  }
 
   return (
     <section className="text-light relative h-64 w-full bg-gray-900">

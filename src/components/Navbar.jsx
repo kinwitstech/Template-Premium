@@ -15,15 +15,16 @@ const navigation = [
     items: [
       { label: "About Us", to: "/about-us" },
       { label: "Contact Us", to: "/contact-us" },
-      {
-        label: "Portfolio Grid More",
-        type: "flyout",
-        items: [
-          { label: "Portfolio", to: "/portfolio" },
-          { label: "Portfolio Grid 3", to: "/portfolio-grid-3" },
-          { label: "Portfolio Grid 4", to: "/portfolio-grid-4" },
-        ],
-      },
+      { label: "Portfolio", to: "/portfolio" },
+      // {
+      //   label: "Portfolio Grid More",
+      //   type: "flyout",
+      //   items: [
+      //     { label: "Portfolio", to: "/portfolio" },
+      //     { label: "Portfolio Grid 3", to: "/portfolio-grid-3" },
+      //     { label: "Portfolio Grid 4", to: "/portfolio-grid-4" },
+      //   ],
+      // },
     ],
   },
   { name: "FAQ", to: "/faq" },
