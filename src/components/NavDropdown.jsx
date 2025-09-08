@@ -20,7 +20,7 @@ export default function NavDropdownMenu({
   }
 
   function handleMouseLeave() {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200);
+    timeoutRef.current = setTimeout(() => setOpen(false), 300);
   }
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function NavDropdownMenu({
             animate={{ opacity: 1, translateY: 0, scale: 1 }}
             exit={{ opacity: 0, translateY: 10, scale: 0.98 }}
             transition={{ duration: 0.18 }}
-            className={`absolute top-full left-0 mt-5 min-w-[250px] rounded-xl p-4 shadow-xl ${
+            className={`absolute top-5 left-0 mt-5 min-w-[250px] rounded-xl p-4 shadow-xl ${
               isScrolled
                 ? "bg-base-100 text-base-content"
                 : "bg-light text-black"
