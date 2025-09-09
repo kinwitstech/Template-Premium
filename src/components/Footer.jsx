@@ -108,7 +108,7 @@ export default function Footer() {
                 <div className="relative pr-2">
                   <button
                     aria-label="Subscribe"
-                    className="text-light bg-primary/50 hover:bg-primary grid size-10 cursor-pointer place-content-center rounded-full ring-0 ring-offset-0 transition"
+                    className="text-light bg-primary/50 hover:bg-primary grid size-10 place-content-center rounded-full"
                   >
                     <Send className="size-4" />
                   </button>

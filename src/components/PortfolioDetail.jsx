@@ -89,7 +89,7 @@ const Testimonial = ({ item }) => {
 
 const ProjectChallenges = ({ challenges = [] }) => {
   return (
-    <div className="py-12">
+    <div className="border-base-content/10 mt-12 mb-10 border-b">
       <h2 className="mb-4">Project Challenges</h2>
       <p className="text-base-content/70 mb-8">
         Investors in the capital markets range from individual retail investors
@@ -108,7 +108,7 @@ const ProjectChallenges = ({ challenges = [] }) => {
         ))}
       </div>
 
-      <div className="mb-12 grid gap-6 md:grid-cols-2">
+      <div className="mb-16 grid gap-6 md:grid-cols-2">
         <img
           src="https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg"
           alt="Professional"
@@ -120,7 +120,7 @@ const ProjectChallenges = ({ challenges = [] }) => {
             alt="Business Meeting"
             className="w-full rounded-lg object-cover"
           />
-          <button className="absolute inset-0 flex items-center justify-center ring-0 ring-offset-0">
+          <button className="absolute inset-0 flex items-center justify-center">
             <span className="bg-opacity-80 bg-primary/80 text-light flex h-14 w-14 items-center justify-center rounded-full">
               ▶
             </span>
@@ -151,7 +151,7 @@ const NavigationButtons = ({ item }) => {
             params: { id: prevItem.id.toString() },
           })
         }
-        className="group flex items-center gap-2 ring-0 ring-offset-0 hover:font-bold"
+        className="group flex items-center gap-2 hover:font-bold"
       >
         <ArrowLeft className="group-hover:text-primary h-5 w-5" />{" "}
         {prevItem?.title}
@@ -164,7 +164,7 @@ const NavigationButtons = ({ item }) => {
             params: { id: nextItem.id.toString() },
           })
         }
-        className="group flex items-center gap-2 ring-0 ring-offset-0 hover:font-bold"
+        className="group flex items-center gap-2 hover:font-bold"
       >
         {nextItem?.title}{" "}
         <ArrowRight className="group-hover:text-primary h-5 w-5" />

@@ -220,7 +220,7 @@ const Navbar = () => {
                   <X className="text-base-content h-6 w-6" />
                 </button>
               </div>
-              <h3 className="from-primary to-accent flex items-center justify-center bg-gradient-to-r bg-clip-text text-center text-transparent">
+              <h3 className="text-gradient-primary flex-center text-center">
                 KINWITS
               </h3>
               <nav className="text-base-content flex flex-col space-y-4 p-6 text-lg font-medium">
@@ -232,7 +232,7 @@ const Navbar = () => {
                       <div key={item.name} className="mb-2 flex flex-col">
                         <button
                           onClick={() => toggleDropdown(idx)}
-                          className={`flex w-full items-center justify-between pb-3 ring-0 ring-offset-0 ${
+                          className={`flex w-full items-center justify-between pb-3 ${
                             isActive ? "text-primary" : ""
                           }`}
                         >

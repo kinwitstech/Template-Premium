@@ -26,13 +26,9 @@ const PortfolioCard = ({ item }) => {
       <div className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-end bg-black/60 p-6 opacity-100 transition duration-500 md:inset-0 md:h-full md:opacity-0 md:group-hover:opacity-100">
         <h3 className="text-xl font-semibold text-white">{item.title}</h3>
         <p className="mb-4 text-sm text-gray-300">{item.category}</p>
-        <Link
-          to={portfolioDetailRoute.to}
-          params={{ id: item.id.toString() }}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 hover:bg-white/40"
-        >
+        <button className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 hover:bg-white/40">
           <ZoomIn className="h-5 w-5 text-white" />
-        </Link>
+        </button>
       </div>
     </div>
   );

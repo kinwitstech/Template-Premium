@@ -34,7 +34,7 @@ export default function NavDropdownMenu({
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`group hover:from-primary hover:to-accent flex items-center gap-2 bg-transparent font-medium ring-0 transition-colors duration-300 focus:ring-0 focus:ring-offset-0 focus:outline-none ${
+        className={`group hover:from-primary hover:to-accent flex items-center gap-2 bg-transparent font-medium ring-0 transition-colors duration-300 focus:ring-0 focus:ring-offset-0 ${
           isScrolled
             ? "hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
             : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"

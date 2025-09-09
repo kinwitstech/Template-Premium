@@ -84,13 +84,13 @@ export default function OurTeamSection() {
 
           <div className="ml-auto flex items-end gap-3 lg:mb-8">
             <button
-              className="swiper-button-prev-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200 ring-0 ring-offset-0"
+              className="swiper-button-prev-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
               aria-label="Previous"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              className="swiper-button-next-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200 ring-0 ring-offset-0"
+              className="swiper-button-next-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
               aria-label="Next"
             >
               <ChevronRight className="h-5 w-5" />
