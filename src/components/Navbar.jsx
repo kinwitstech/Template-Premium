@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Plus, Minus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import NavDropdownMenu from "./NavDropdown";
@@ -14,8 +14,8 @@ const navigation = [
     type: "dropdown",
     items: [
       { label: "About Us", to: "/about-us" },
-      { label: "Contact Us", to: "/contact-us" },
       { label: "Portfolio", to: "/portfolio" },
+      { label: "Contact Us", to: "/contact-us" },
       // {
       //   label: "Portfolio Grid More",
       //   type: "flyout",
@@ -32,6 +32,15 @@ const navigation = [
   { name: "Contact", to: "/contact" },
 ];
 
+/**
+ * The useScrollThreshold function in JavaScript React is used to determine if the user has scrolled
+ * past a specified threshold ratio on a webpage.
+ * @returns The `useScrollThreshold` function returns an object with three properties:
+ * 1. `scrolled`: A boolean state variable indicating whether the user has scrolled past the defined
+ * threshold ratio.
+ * 2. `sentinelRef`: A reference to the sentinel element used for observing scroll intersection.
+ * 3. `sentinelStyle`: An object containing CSS styles for the sentinel element.
+ */
 function useScrollThreshold(thresholdRatio = 0.8, pathname) {
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef(null);
@@ -78,6 +87,11 @@ const Navbar = () => {
     0.5,
     pathname
   );
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleDropdown = (idx) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -201,21 +215,66 @@ const Navbar = () => {
               transition={{ type: "tween", duration: 0.3 }}
               className="bg-base-100 fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col shadow-xl"
             >
-              <div className="flex items-center justify-end border-b p-4">
+              <div className="flex items-center justify-end p-4">
                 <button onClick={() => setOverlayOpen(false)}>
                   <X className="text-base-content h-6 w-6" />
                 </button>
               </div>
-              <nav className="text-base-content flex flex-col space-y-6 p-6 text-lg font-medium">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setOverlayOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+              <h3 className="text-gradient-primary flex-center text-center">
+                KINWITS
+              </h3>
+              <nav className="text-base-content flex flex-col space-y-4 p-6 text-lg font-medium">
+                {navigation.map((item, idx) => {
+                  const isActive = isNavItemActive(item, pathname);
+                  if (item.type === "dropdown") {
+                    const isOpen = openIndex === idx;
+                    return (
+                      <div key={item.name} className="mb-2 flex flex-col">
+                        <button
+                          onClick={() => toggleDropdown(idx)}
+                          className={`flex w-full items-center justify-between pb-3 ${
+                            isActive ? "text-primary" : ""
+                          }`}
+                        >
+                          <span>{item.name}</span>
+                          {isOpen ? (
+                            <Minus className="h-4 w-4" />
+                          ) : (
+                            <Plus className="h-4 w-4" />
+                          )}
+                        </button>
+
+                        {isOpen && (
+                          <div className="mt-2 ml-4 flex flex-col space-y-2 text-base">
+                            {item.items.map((sub) => {
+                              const subActive = isNavItemActive(sub, pathname);
+                              return (
+                                <Link
+                                  key={sub.label}
+                                  to={sub.to}
+                                  onClick={() => setOverlayOpen(false)}
+                                  className={`${subActive ? "text-primary" : ""} pb-4`}
+                                >
+                                  {sub.label}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={idx}
+                      to={item.to}
+                      onClick={() => setOverlayOpen(false)}
+                      className={`${isActive ? "text-primary" : ""}`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </nav>
             </motion.div>
           </>
