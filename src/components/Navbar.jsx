@@ -213,7 +213,7 @@ const Navbar = () => {
               animate={{ translateX: 0 }}
               exit={{ translateX: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="bg-base-100/95 fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col shadow-xl"
+              className="bg-base-100 fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col shadow-xl"
             >
               <div className="flex items-center justify-end p-4">
                 <button onClick={() => setOverlayOpen(false)}>
