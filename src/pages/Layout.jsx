@@ -1,4 +1,4 @@
-import { Outlet } from "@tanstack/react-router";
+import { Outlet, useRouterState } from "@tanstack/react-router";
 import { ArrowUpFromDot } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -7,6 +7,11 @@ import Navbar from "@/components/Navbar";
 
 const Layout = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { location } = useRouterState();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {

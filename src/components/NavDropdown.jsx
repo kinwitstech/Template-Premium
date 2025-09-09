@@ -20,7 +20,7 @@ export default function NavDropdownMenu({
   }
 
   function handleMouseLeave() {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200);
+    timeoutRef.current = setTimeout(() => setOpen(false), 300);
   }
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function NavDropdownMenu({
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`group hover:from-primary hover:to-accent flex items-center gap-2 bg-transparent font-medium ring-0 transition-colors duration-300 focus:ring-0 focus:ring-offset-0 focus:outline-none ${
+        className={`group hover:from-primary hover:to-accent flex items-center gap-2 bg-transparent font-medium ring-0 transition-colors duration-300 focus:ring-0 focus:ring-offset-0 ${
           isScrolled
             ? "hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
             : "from-primary-content to-primary-content bg-gradient-to-r bg-clip-text text-transparent"
@@ -71,7 +71,7 @@ export default function NavDropdownMenu({
             animate={{ opacity: 1, translateY: 0, scale: 1 }}
             exit={{ opacity: 0, translateY: 10, scale: 0.98 }}
             transition={{ duration: 0.18 }}
-            className={`absolute top-full left-0 mt-5 min-w-[250px] rounded-xl p-4 shadow-xl ${
+            className={`absolute top-5 left-0 mt-5 min-w-[250px] rounded-xl p-4 shadow-xl ${
               isScrolled
                 ? "bg-base-100 text-base-content"
                 : "bg-light text-black"
@@ -111,7 +111,6 @@ function DropdownItem({ to, label }) {
         to={to}
         className="group relative flex items-center px-4 py-2 transition-all"
       >
-        {/* Left indicator */}
         <span
           className={`bg-primary ring-primary/20 absolute left-2 block h-1 w-3 rounded-full ring-4 transition-all duration-200 ${isActive ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"} `}
         />

@@ -78,7 +78,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-primary/5 w-full">
+    <section id="testimonials" className="bg-primary/5 w-full">
       <div className="section-container section-padding flex-col gap-8">
         <div className="mb-8 flex justify-between">
           <div>

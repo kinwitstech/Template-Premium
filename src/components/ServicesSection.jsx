@@ -40,9 +40,9 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="w-full">
+    <section id="services" className="w-full">
       <div className="section-container section-padding section-flex">
-        <div className="responsive-flex mb-4 flex md:items-center md:justify-between">
+        <div className="responsive-flex mb-4 md:items-center md:justify-between">
           <div>
             <p className="section-badge">Our Services</p>
             <h1 className="section-title max-w-2xl">

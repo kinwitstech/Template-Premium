@@ -86,11 +86,11 @@
 
   /* Buttons */
   .btn-primary {
-    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300 cursor-pointer;
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex cursor-pointer items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300;
   }
 
   .btn-primary-sm {
-    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex items-center rounded-full bg-gradient-to-r px-6 py-3 text-base font-bold shadow-lg transition duration-300 cursor-pointer;
+    @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex cursor-pointer items-center rounded-full bg-gradient-to-r px-6 py-3 text-base font-bold shadow-lg transition duration-300;
   }
 
   .services-btn-icon {
@@ -162,10 +162,17 @@
   }
 
   .input-default {
-    @apply focus:ring-primary/30 border-base-content/15 w-full rounded-lg border p-3 focus:ring-2 focus:outline-none
+    @apply focus:ring-primary/30 border-base-content/15 w-full rounded-lg border p-3 focus:ring-2 focus:outline-none;
   }
 
   .error-msg {
     @apply text-error mt-1 text-sm;
+  }
+
+  .custom-pagination {
+    --swiper-pagination-bullet-width: 3rem;
+    --swiper-pagination-bullet-height: 6px;
+    --swiper-pagination-bullet-border-radius: 10%;
+    --swiper-pagination-bullet-horizontal-gap: 0.35rem;
   }
 }

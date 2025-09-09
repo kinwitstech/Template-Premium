@@ -108,7 +108,7 @@ export default function Footer() {
                 <div className="relative pr-2">
                   <button
                     aria-label="Subscribe"
-                    className="text-light bg-primary/50 hover:bg-primary grid size-10 cursor-pointer place-content-center rounded-full ring-0 ring-offset-0 transition"
+                    className="text-light bg-primary/50 hover:bg-primary grid size-10 place-content-center rounded-full"
                   >
                     <Send className="size-4" />
                   </button>
@@ -126,7 +126,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="text-light/70 mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm md:flex-row">
           <p>© 2025 Kinwits. All rights reserved.</p>
