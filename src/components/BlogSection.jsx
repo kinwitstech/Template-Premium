@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "@tanstack/react-router";
 
 const blogPosts = [
   {
     id: 1,
+    slug: "financial-planning-strategies-small-businesses",
     title: "Financial Planning Strategies for Small Businesses",
     excerpt: "Discover effective financial planning strategies that can help small businesses optimize their cash flow and improve profitability.",
     author: "Sarah Johnson",
@@ -13,16 +15,18 @@ const blogPosts = [
   },
   {
     id: 2,
+    slug: "tax-optimization-techniques-2024",
     title: "Tax Optimization Techniques for 2024",
     excerpt: "Learn about the latest tax optimization techniques and strategies to maximize your savings while staying compliant with regulations.",
     author: "Michael Chen",
     date: "March 10, 2024",
     category: "Tax Planning",
     readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1554224154-26032cdc0c0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
   },
   {
     id: 3,
+    slug: "investment-portfolio-diversification-guide",
     title: "Investment Portfolio Diversification Guide",
     excerpt: "A comprehensive guide to diversifying your investment portfolio to minimize risk and maximize returns in today's market.",
     author: "Emily Rodriguez",
@@ -34,6 +38,7 @@ const blogPosts = [
 ];
 
 export default function BlogSection() {
+
   return (
     <section className="bg-base-100 w-full">
       <div className="section-container section-padding flex-col gap-8">
@@ -43,19 +48,20 @@ export default function BlogSection() {
             <h1 className="section-title">
               Financial Insights & Updates
             </h1>
-            <p className="text-base-content/70 mt-4 max-w-2xl">
+            <p className="text-base-content/80 mt-4 max-w-2xl">
               Stay informed with our latest articles on financial planning, tax strategies, and investment insights.
             </p>
           </div>
-          <button className="btn btn-primary">
+          <Link to="/blog" className="btn btn-primary">
             View All Posts
-          </button>
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
-            <article key={post.id} className="group cursor-pointer">
-              <div className="bg-base-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
+            <article key={post.id} className="group">
+              <Link to={`/blog/${post.slug}`}>
+                <div className="bg-base-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={post.image} 
@@ -74,7 +80,7 @@ export default function BlogSection() {
                     <span>{post.readTime}</span>
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-3 text-base-content group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
                   
@@ -89,15 +95,16 @@ export default function BlogSection() {
                           {post.author.split(' ').map(n => n[0]).join('')}
                         </span>
                       </div>
-                      <span className="text-sm font-medium">{post.author}</span>
+                      <span className="text-sm font-medium text-base-content">{post.author}</span>
                     </div>
                     
-                    <button className="text-primary hover:text-primary-focus font-medium text-sm group-hover:translate-x-1 transition-transform">
+                    <span className="text-primary hover:text-primary-focus font-medium text-sm group-hover:translate-x-1 transition-transform">
                       Read More →
-                    </button>
+                    </span>
                   </div>
                 </div>
-              </div>
+                </div>
+              </Link>
             </article>
           ))}
         </div>

@@ -21,7 +21,7 @@ const PageHeader = ({ title, customName = false }) => {
   }
 
   return (
-    <section className="text-light relative h-64 w-full bg-gray-900">
+    <section className="text-white relative h-64 w-full bg-gray-900 dark:bg-gray-800">
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop"
@@ -29,26 +29,26 @@ const PageHeader = ({ title, customName = false }) => {
           alt="Team working together"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/70 dark:bg-black/80" />
       </div>
 
       <div className="flex-center relative z-10 h-full flex-col text-center">
-        <h1 className="">{title}</h1>
-        <nav className="border-primary-content/80 mt-4 flex items-center space-x-2 rounded-full border p-3 text-sm">
+        <h1 className="text-white dark:text-gray-100">{title}</h1>
+        <nav className="border-white/20 dark:border-gray-300/20 mt-4 flex items-center space-x-2 rounded-full border p-3 text-sm">
           {crumbs.map((crumb, idx) => (
             <span key={crumb.to} className="flex items-center">
               {idx < crumbs.length - 1 ? (
                 <Link
                   to={crumb.to}
-                  className="hover:text-primary cursor-pointer transition-colors"
+                  className="hover:text-primary cursor-pointer transition-colors text-white/80 dark:text-gray-200"
                 >
                   {crumb.name}
                 </Link>
               ) : (
-                <span className="text-light/80">{crumb.name}</span>
+                <span className="text-white/80 dark:text-gray-200">{crumb.name}</span>
               )}
               {idx < crumbs.length - 1 && (
-                <span className="text-light/50 mx-2">{">"}</span>
+                <span className="text-white/50 dark:text-gray-400 mx-2">{">"}</span>
               )}
             </span>
           ))}

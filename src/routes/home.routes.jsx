@@ -4,6 +4,7 @@ import { rootRouteWrapper } from "./rootRouteWrapper";
 import PortfolioDetail from "@/components/PortfolioDetail";
 import AboutUs from "@/pages/AboutUs";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import Home from "@/pages/Home";
 import Layout from "@/pages/Layout";
 import { Portfolios } from "@/pages/Portfolios";
@@ -38,6 +39,12 @@ export const blogRoute = createRoute({
   component: Blog,
 });
 
+export const blogPostRoute = createRoute({
+  getParentRoute: () => homeLayoutRoute,
+  path: "/blog/$slug",
+  component: BlogPost,
+});
+
 export const portfolioDetailRoute = createRoute({
   getParentRoute: () => homeLayoutRoute,
   path: "/portfolio/$id",
@@ -49,5 +56,6 @@ homeLayoutRoute.addChildren([
   aboutUsRoute,
   portfolioRoute,
   blogRoute,
+  blogPostRoute,
   portfolioDetailRoute,
 ]);
