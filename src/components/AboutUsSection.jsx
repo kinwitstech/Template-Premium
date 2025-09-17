@@ -1,26 +1,34 @@
 import { useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Cpu, Zap } from "lucide-react";
-import { Layout, Users, Rocket, Clock, Briefcase } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  Clock,
+  Cpu,
+  Layout,
+  Rocket,
+  Users,
+  Zap,
+} from "lucide-react";
 
 const features = [
   {
-    icon: <Layout className="text-primary h-8 w-8" />,
+    icon: <Layout className="text-secondary h-8 w-8" />,
     title: "Modern Templates",
   },
   {
-    icon: <Users className="text-primary h-8 w-8" />,
+    icon: <Users className="text-secondary h-8 w-8" />,
     title: "Built for Teams",
   },
   {
-    icon: <Rocket className="text-primary h-8 w-8" />,
+    icon: <Rocket className="text-secondary h-8 w-8" />,
     title: "Launch Faster",
   },
   {
-    icon: <Clock className="text-primary h-8 w-8" />,
+    icon: <Clock className="text-secondary h-8 w-8" />,
     title: "On-Time Delivery",
   },
   {
-    icon: <Briefcase className="text-primary h-8 w-8" />,
+    icon: <Briefcase className="text-secondary h-8 w-8" />,
     title: "Business Ready",
   },
 ];

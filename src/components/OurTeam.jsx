@@ -1,25 +1,44 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-  Share2,
-  Image as ImageIcon,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Share2, Twitter, } from "lucide-react";
 import { useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const team = [
-  { name: "James Garcia", role: "Finance Director" },
-  { name: "Victoria Lauren", role: "Chief Financial Officer" },
-  { name: "James Anderson", role: "Tax Accountant" },
-  { name: "Tomas White", role: "Cost Accountant" },
-  { name: "Victoria Lauren1", role: "Chief Financial Officer" },
-  { name: "James Anderson1", role: "Tax Accountant" },
-  { name: "Tomas White1", role: "Cost Accountant" },
+  {
+    name: "Victoria Lauren",
+    role: "Chief Financial Officer",
+    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Michael Lee",
+    role: "Operations Head",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Victoria White",
+    role: "Cost Accountant",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "John Doe",
+    role: "Chief Financial Officer",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "James Anderson",
+    role: "Tax Accountant",
+    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Tomas White",
+    role: "Cost Accountant",
+    img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Sophia Brown",
+    role: "HR Manager",
+    img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+  },
 ];
 
 function TeamCard({ m }) {
@@ -34,13 +53,13 @@ function TeamCard({ m }) {
         className="group relative flex h-80 items-center justify-center overflow-hidden rounded-3xl bg-slate-100 shadow-sm ring-1 ring-black/5 md:h-96"
         onClick={() => setOpen((prev) => !prev)}
       >
-        <ImageIcon className="h-16 w-16 text-slate-400" />
+        <img src={m.img} alt={m.name} className="h-full w-full object-cover" />
 
         <div className="absolute right-4 bottom-4">
           <div
             onClick={() => setOpen((prev) => !prev)}
-            className={`bg-primary/20 flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${
-              open ? "bg-primary/80 w-43 justify-between" : "w-11 justify-end"
+            className={`bg-primary flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${
+              open ? "bg-secondary w-43 justify-between" : "w-11 justify-end"
             } group-hover:bg-primary/80 group-hover:w-43 group-hover:justify-between`}
           >
             <div
@@ -72,7 +91,7 @@ function TeamCard({ m }) {
 
 export default function OurTeamSection() {
   return (
-    <section id="our-team" className="w-full">
+    <section id="our-team" className="bg-primary/5 w-full">
       <div className="section-container section-padding">
         <div className="mb-8 flex flex-wrap justify-between gap-6">
           <div className="max-w-3xl">
@@ -84,13 +103,13 @@ export default function OurTeamSection() {
 
           <div className="ml-auto flex items-end gap-3 lg:mb-8">
             <button
-              className="swiper-button-prev-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
+              className="swiper-button-prev-custom hover:bg-accent hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
               aria-label="Previous"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              className="swiper-button-next-custom hover:bg-primary/80 hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
+              className="swiper-button-next-custom hover:bg-accent hover:text-light grid h-11 w-16 place-items-center rounded-full border border-slate-200"
               aria-label="Next"
             >
               <ChevronRight className="h-5 w-5" />

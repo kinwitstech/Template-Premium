@@ -16,9 +16,9 @@ export default function Home() {
       <OurProcessSection />
       <ServicesSection />
       <TestimonialsSection />
+      <PortfolioSection />
       <OurTeamSection />
       <FAQSection />
-      <PortfolioSection />
       <ContactSection />
     </main>
   );

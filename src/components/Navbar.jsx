@@ -1,7 +1,6 @@
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Plus, Minus } from "lucide-react";
+import { Menu, Minus, Plus, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import NavDropdownMenu from "./NavDropdown";
@@ -14,8 +13,8 @@ const navigation = [
     type: "dropdown",
     items: [
       { label: "About Us", to: "/about-us" },
-      { label: "Portfolio", to: "/portfolio" },
-      { label: "Contact Us", to: "/contact-us" },
+      // { label: "Portfolio", to: "/portfolio" },
+      // { label: "Contact Us", to: "/contact-us" },
       // {
       //   label: "Portfolio Grid More",
       //   type: "flyout",
@@ -27,8 +26,9 @@ const navigation = [
       // },
     ],
   },
-  { name: "FAQ", to: "/faq" },
-  { name: "Testimonials", to: "/testimonials" },
+  // { name: "FAQ", to: "/faq" },
+  // { name: "Testimonials", to: "/testimonials" },
+  { name: "Portfolio", to: "/portfolio" },
   { name: "Contact", to: "/contact" },
 ];
 
@@ -41,7 +41,7 @@ const navigation = [
  * 2. `sentinelRef`: A reference to the sentinel element used for observing scroll intersection.
  * 3. `sentinelStyle`: An object containing CSS styles for the sentinel element.
  */
-function useScrollThreshold(thresholdRatio = 0.8, pathname) {
+function useScrollThreshold(thresholdRatio = 0.3, pathname) {
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef(null);
 
@@ -84,7 +84,7 @@ const Navbar = () => {
   );
   const { pathname } = useLocation();
   const { scrolled, sentinelRef, sentinelStyle } = useScrollThreshold(
-    0.5,
+    0.1,
     pathname
   );
   const [openIndex, setOpenIndex] = useState(null);
@@ -119,13 +119,14 @@ const Navbar = () => {
             : "bg-base-100 w-full shadow-md"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <div className="container mx-auto flex items-center justify-between px-6 py-7">
           <div className="flex-1">
-            <img
-              src="/kinwits_logo.png"
-              alt="Logo"
-              className="ml-2 inline-block h-9 w-9"
-            />
+            {/*<img*/}
+            {/*  src="/kinwits_logo.png"*/}
+            {/*  alt="Logo"*/}
+            {/*  className="ml-2 inline-block h-9 w-9"*/}
+            {/*/>*/}
+            <div className="text-2xl font-bold">KINWITS</div>
           </div>
 
           <nav className="hidden flex-1 justify-center space-x-8 font-medium md:flex">
@@ -157,7 +158,7 @@ const Navbar = () => {
                         <>
                           <motion.span
                             layoutId="nav-underline"
-                            className="from-primary to-accent animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
+                            className="from-primary to-primary animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
                             transition={{
                               type: "spring",
                               stiffness: 400,
@@ -175,15 +176,15 @@ const Navbar = () => {
           </nav>
 
           <div className="flex flex-1 items-center justify-end space-x-4">
-            <label className="swap swap-rotate">
-              <input
-                type="checkbox"
-                checked={theme === "dark"}
-                onChange={toggleTheme}
-              />
-              <SunIcon className="swap-on h-5 w-5 text-yellow-500" />
-              <MoonIcon className="swap-off h-5 w-5 text-yellow-400" />
-            </label>
+            {/*<label className="swap swap-rotate">*/}
+            {/*  <input*/}
+            {/*    type="checkbox"*/}
+            {/*    checked={theme === "dark"}*/}
+            {/*    onChange={toggleTheme}*/}
+            {/*  />*/}
+            {/*  <SunIcon className="swap-on h-5 w-5 text-yellow-500" />*/}
+            {/*  <MoonIcon className="swap-off h-5 w-5 text-yellow-400" />*/}
+            {/*</label>*/}
 
             {/* Mobile menu button */}
             <button

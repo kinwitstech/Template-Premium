@@ -48,7 +48,7 @@
 
   /* Section Headers */
   .section-badge {
-    @apply text-primary mb-2 tracking-wide uppercase;
+    @apply text-secondary/70 mb-2 tracking-wide uppercase;
   }
 
   .section-title {
@@ -86,6 +86,10 @@
 
   /* Buttons */
   .btn-primary {
+    @apply bg-accent hover:bg-accent/75 text-primary-content flex cursor-pointer items-center rounded-full px-8 py-4 text-lg font-bold shadow-xl transition duration-300;
+  }
+
+  .btn-primary-gradient {
     @apply from-primary to-accent hover:from-accent/80 hover:to-primary/80 text-primary-content flex cursor-pointer items-center rounded-full bg-gradient-to-r px-8 py-4 text-lg font-bold shadow-xl transition duration-300;
   }
 
@@ -149,7 +153,7 @@
   }
 
   .card-number {
-    @apply text-base-content/30 group-hover:text-base-content absolute top-6 right-7 text-2xl font-bold select-none;
+    @apply text-base-content/30 group-hover:text-secondary absolute top-6 right-7 text-2xl font-bold select-none;
   }
 
   /* Responsive Utilities */

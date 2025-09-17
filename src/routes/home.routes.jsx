@@ -3,6 +3,7 @@ import { createRoute } from "@tanstack/react-router";
 import { rootRouteWrapper } from "./rootRouteWrapper";
 import PortfolioDetail from "@/components/PortfolioDetail";
 import AboutUs from "@/pages/AboutUs";
+import Contact from "@/pages/Contact.jsx";
 import Home from "@/pages/Home";
 import Layout from "@/pages/Layout";
 import { Portfolios } from "@/pages/Portfolios";
@@ -37,9 +38,16 @@ export const portfolioDetailRoute = createRoute({
   component: PortfolioDetail,
 });
 
+export const contactRoute = createRoute({
+  path: "/contact",
+  getParentRoute: () => homeLayoutRoute,
+  component: Contact,
+});
+
 homeLayoutRoute.addChildren([
   homeIndexRoute,
   aboutUsRoute,
   portfolioRoute,
   portfolioDetailRoute,
+  contactRoute,
 ]);
