@@ -1,4 +1,5 @@
 import AboutUsSection from "@/components/AboutUsSection";
+import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactUsSection";
 import FAQSection from "@/components/Faq";
 import Jumbotron from "@/components/Jumbotron";
@@ -16,6 +17,7 @@ export default function Home() {
       <OurProcessSection />
       <ServicesSection />
       <TestimonialsSection />
+      <BlogSection />
       <OurTeamSection />
       <FAQSection />
       <PortfolioSection />
