@@ -20,7 +20,7 @@ const OurProcessSection = () => {
           </div>
         </div>
 
-        <div className="bg-primary/90 text-primary-content/90 divide-primary-content/20 grid w-full grid-cols-1 gap-6 divide-y rounded-2xl px-4 py-18 sm:grid-cols-2 sm:divide-x md:grid-cols-4 md:divide-y-0">
+        <div className="bg-accent text-primary-content/90 divide-primary-content/20 grid w-full grid-cols-1 gap-6 divide-y rounded-2xl px-4 py-18 sm:grid-cols-2 sm:divide-x md:grid-cols-4 md:divide-y-0">
           <div className="text-center">
             <h3 className="text-7xl font-bold">
               {inView && <CountUp end={5} duration={3} separator="," />}K+

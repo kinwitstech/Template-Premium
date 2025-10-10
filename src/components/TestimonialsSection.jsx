@@ -47,31 +47,31 @@ const testimonials = [
   {
     name: "Jesonal Jelins",
     title: "Team Captain",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
     text: "Partnering with this financial consulting team was a game-changer for our business. Their expert guidance on cash flow management and budgeting helped us optimize resources and improve profitability.",
   },
   {
     name: "Jackson Marshall",
     title: "Horse Rider",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
     text: "The tax planning strategies provided by their team have saved us thousands of dollars while ensuring full compliance. Their knowledge of corporate tax laws and deductions is truly impressive. We were struggling with financial forecasting and decision-making.",
   },
   {
     name: "Jesonal Jelins",
     title: "Team Captain",
+    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80",
     text: "Partnering with this financial consulting team was a game-changer for our business. Their expert guidance on cash flow management and budgeting helped us optimize resources and improve profitability.",
   },
   {
     name: "Jackson Marshall",
     title: "Horse Rider",
+    img: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=400&q=80",
     text: "The tax planning strategies provided by their team have saved us thousands of dollars while ensuring full compliance. Their knowledge of corporate tax laws and deductions is truly impressive. We were struggling with financial forecasting and decision-making.",
   },
   {
-    name: "Jesonal Jelins",
-    title: "Team Captain",
-    text: "Partnering with this financial consulting team was a game-changer for our business. Their expert guidance on cash flow management and budgeting helped us optimize resources and improve profitability.",
-  },
-  {
     name: "Jackson Marshall",
     title: "Horse Rider",
+    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
     text: "The tax planning strategies provided by their team have saved us thousands of dollars while ensuring full compliance. Their knowledge of corporate tax laws and deductions is truly impressive. We were struggling with financial forecasting and decision-making.",
   },
 ];
@@ -113,9 +113,17 @@ export default function TestimonialsSection() {
               <div className="flex h-full flex-col bg-transparent">
                 <p className="mb-8 text-lg leading-relaxed">{t.text}</p>
                 <div className="mt-auto flex items-center">
-                  <div className="mr-4 h-16 w-16 flex-shrink-0 rounded-full bg-gray-400"></div>
+                  <div className="mr-4 h-16 w-16 flex-shrink-0 rounded-full">
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="h-16 w-16 rounded-full object-cover"
+                    />
+                  </div>
                   <div>
-                    <div className="text-xl font-semibold">{t.name}</div>
+                    <div className="text-primary text-xl font-semibold">
+                      {t.name}
+                    </div>
                     <div className="text-base-content/60">{t.title}</div>
                   </div>
                 </div>

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { ReactTyped } from "react-typed";
 import {
   A11y,
   Autoplay,
@@ -12,44 +11,7 @@ import {
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const slides = [
-  {
-    title: ["Inspire.", "Launch.", "Grow."],
-    subtitle: "Premium Startup Template",
-    description:
-      "Discover stunning template crafted for ambitious brands. Elevate your digital presence and launch with confidence—your next big idea starts here.",
-    bars: [
-      { value: "70%", height: 180 },
-      { value: "90%", height: 220 },
-      { value: "100%", height: 260 },
-    ],
-    bg: "/slide1.mp4",
-  },
-  {
-    title: ["Handpicked Designs for Visionaries"],
-    subtitle: "Curated for Every Industry",
-    description:
-      "Browse our portfolio of client-ready templates—each designed to impress, convert, and scale. Find the perfect fit for your business vision.",
-    bars: [
-      { value: "60%", height: 150 },
-      { value: "85%", height: 210 },
-      { value: "100%", height: 250 },
-    ],
-    bg: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80')",
-  },
-  {
-    title: ["See What’s Possible"],
-    subtitle: "Real Results. Real Clients.",
-    description:
-      "Explore success stories from brands who trusted our templates to power their growth. Your journey to a standout website starts here.",
-    bars: [
-      { value: "50%", height: 120 },
-      { value: "80%", height: 200 },
-      { value: "100%", height: 240 },
-    ],
-    bg: "url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1500&q=80')",
-  },
-];
+import { slides } from "@/common/jumbotronData.js";
 
 export default function Jumbotron() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -76,7 +38,7 @@ export default function Jumbotron() {
           nextEl: "#jumbotron-next",
         }}
       >
-        {slides.map((slide, idx) => (
+        {slides?.map((slide, idx) => (
           <SwiperSlide key={idx}>
             {slide.bg.endsWith(".mp4") ? (
               <motion.video
@@ -104,7 +66,7 @@ export default function Jumbotron() {
             <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 lg:items-start">
               <div className="flex w-full max-w-xl flex-col justify-center md:w-1/2">
                 <motion.p
-                  className="text-primary mb-4 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
+                  className="text-primary-content mb-4 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
                   initial={{
                     opacity: activeIndex === idx ? 0 : 1,
                     x: activeIndex === idx ? -40 : 0,
@@ -127,14 +89,15 @@ export default function Jumbotron() {
                     x: activeIndex === idx ? 0 : -70,
                   }}
                   transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
-                  className="from-primary to-accent mb-6 max-w-xl bg-gradient-to-r bg-clip-text leading-tight font-extrabold text-transparent drop-shadow-2xl md:text-7xl"
+                  className="text-primary mb-6 max-w-xl leading-tight font-extrabold drop-shadow-2xl md:text-7xl"
                 >
-                  <ReactTyped
-                    strings={slide.title}
-                    typeSpeed={125}
-                    backSpeed={75}
-                    loop
-                  />
+                  {/*<ReactTyped*/}
+                  {/*  strings={slide.title}*/}
+                  {/*  typeSpeed={125}*/}
+                  {/*  backSpeed={75}*/}
+                  {/*  loop*/}
+                  {/*/>*/}
+                  {slide?.title}
                 </motion.h1>
                 <motion.div
                   className="text-primary-content mb-10 leading-relaxed font-medium tracking-widest drop-shadow"
@@ -153,7 +116,7 @@ export default function Jumbotron() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-center group btn-primary w-[14rem]"
+                  className="flex-center group btn-primary hover:bg-primary/10 w-[14rem]"
                 >
                   Learn More
                   <span className="btn-arrow-animation">
