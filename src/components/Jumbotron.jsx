@@ -63,7 +63,7 @@ export default function Jumbotron() {
               />
             )}
             <div className="absolute inset-0 bg-gray-900/60" />
-            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 lg:items-start">
+            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center lg:items-start lg:text-left">
               <div className="flex w-full max-w-xl flex-col justify-center md:w-1/2">
                 <motion.p
                   className="text-primary-content mb-4 text-sm font-semibold tracking-widest uppercase drop-shadow-lg"
@@ -116,7 +116,7 @@ export default function Jumbotron() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-center group btn-primary hover:bg-primary/10 w-[14rem]"
+                  className="flex-center group btn-primary hover:bg-primary/10 mx-auto w-[14rem] lg:mx-0"
                 >
                   Learn More
                   <span className="btn-arrow-animation">

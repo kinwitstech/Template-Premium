@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
             </h1>
           </div>
           <div>
-            <QuoteIcon className="text-base-content/30 h-24 w-36" />
+            <QuoteIcon className="text-accent/70 h-24 w-36" />
           </div>
         </div>
         <hr className="border-base-content/20 mb-8" />

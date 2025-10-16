@@ -53,7 +53,7 @@ export default function ServicesSection() {
               your product and brand presence.
             </p>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center md:justify-start">
             <button className="group btn-primary">
               Learn More
               <span className="btn-arrow-animation">

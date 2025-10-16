@@ -41,12 +41,14 @@ const FeatureSection = () => {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="flex-center group border-base-content/10 flex-col px-4 last:border-r-0 lg:border-r"
+              className="flex-center group border-base-content/10 flex-col px-4 md:border-r last:md:border-r-0"
             >
               <span className="group-hover:animate-flip-once">
                 {feature.icon}
               </span>
               <p className="mt-2 text-lg font-medium">{feature.title}</p>
+
+              <div className="bg-base-content/20 -mx-4 mt-4 h-px w-[calc(100%+2rem)] md:hidden" />
             </div>
           ))}
         </div>
@@ -107,7 +109,7 @@ export default function AboutUsSection() {
               </div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center md:justify-start">
               <button
                 className="group btn-primary"
                 onClick={() => navigate({ to: "/about-us" })}

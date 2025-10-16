@@ -19,7 +19,7 @@ export default function PortfolioSection() {
               Digitize Your Business Now With Our Best Experts
             </h1>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center md:justify-start">
             <button
               className="group btn-primary"
               onClick={() => navigate({ to: "/portfolio" })}
