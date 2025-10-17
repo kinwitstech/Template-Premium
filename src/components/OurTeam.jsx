@@ -64,14 +64,14 @@ function TeamCard({ m }) {
 
       <div
         className="group relative flex h-80 items-center justify-center overflow-hidden rounded-3xl bg-slate-100 shadow-sm ring-1 ring-black/5 md:h-96"
-        onClick={() => setOpen(false)} // close menu when clicking outside on mobile
+        onClick={() => setOpen(false)}
       >
         <img src={m.img} alt={m.name} className="h-full w-full object-cover" />
 
         <div className="absolute right-4 bottom-4">
           <div
             onClick={toggleMenu}
-            className={`bg-primary flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${open ? "bg-secondary w-43 justify-between" : "w-11 justify-end"} group-hover:bg-primary/80 group-hover:w-43 group-hover:justify-between md:cursor-pointer`}
+            className={`bg-primary flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${open ? "bg-secondary w-[10.75rem] justify-between" : "w-11 justify-end"} group-hover:bg-primary/80 group-hover:w-[10.75rem] group-hover:justify-between md:cursor-pointer`}
           >
             <div
               className={`flex items-center gap-2 transition-opacity duration-300 ${
@@ -94,7 +94,9 @@ function TeamCard({ m }) {
               </a>
             </div>
 
-            <Share2 className="text-light h-4 w-4 flex-shrink-0" />
+            <button onClick={toggleMenu} className="p-1">
+              <Share2 className="text-light h-4 w-4 flex-shrink-0" />
+            </button>
           </div>
         </div>
       </div>

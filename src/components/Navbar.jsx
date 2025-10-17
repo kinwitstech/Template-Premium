@@ -27,15 +27,20 @@ function useScrollThreshold(thresholdRatio = 0.3, pathname) {
       return;
     }
     setScrolled(false);
+
+    // ✅ Apply thresholdRatio using rootMargin
     const observer = new IntersectionObserver(
       ([entry]) => {
         setScrolled(!entry.isIntersecting);
       },
-      { threshold: 0 }
+      {
+        rootMargin: `-${thresholdRatio * 100}% 0px 0px 0px`,
+      }
     );
+
     observer.observe(sentinelRef.current);
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, thresholdRatio]);
 
   const sentinelStyle = {
     position: "absolute",
@@ -129,6 +134,7 @@ const Navbar = () => {
                       {isActive && (
                         <motion.span
                           layoutId="nav-underline"
+                          aria-hidden="true"
                           className="from-primary to-primary animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
                           transition={{
                             type: "spring",
@@ -165,6 +171,9 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setOverlayOpen(true)}
+            aria-label="Open menu"
+            aria-controls="mobile-menu"
+            aria-expanded={overlayOpen}
             className={`rounded-md border p-2 transition-colors md:hidden ${
               isTransparent
                 ? "border-white text-white"
