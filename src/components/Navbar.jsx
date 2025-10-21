@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Minus, Plus, X } from "lucide-react";
+import { Menu, Minus, Plus, X, ShoppingCart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import NavDropdownMenu from "./NavDropdown";
@@ -11,57 +11,36 @@ const navigation = [
   {
     name: "Pages",
     type: "dropdown",
-    items: [
-      { label: "About Us", to: "/about-us" },
-      // { label: "Portfolio", to: "/portfolio" },
-      // { label: "Contact Us", to: "/contact-us" },
-      // {
-      //   label: "Portfolio Grid More",
-      //   type: "flyout",
-      //   items: [
-      //     { label: "Portfolio", to: "/portfolio" },
-      //     { label: "Portfolio Grid 3", to: "/portfolio-grid-3" },
-      //     { label: "Portfolio Grid 4", to: "/portfolio-grid-4" },
-      //   ],
-      // },
-    ],
+    items: [{ label: "About Us", to: "/about-us" }],
   },
-  // { name: "FAQ", to: "/faq" },
-  // { name: "Testimonials", to: "/testimonials" },
   { name: "Portfolio", to: "/portfolio" },
   { name: "Contact", to: "/contact" },
 ];
 
-/**
- * The useScrollThreshold function in JavaScript React is used to determine if the user has scrolled
- * past a specified threshold ratio on a webpage.
- * @returns The `useScrollThreshold` function returns an object with three properties:
- * 1. `scrolled`: A boolean state variable indicating whether the user has scrolled past the defined
- * threshold ratio.
- * 2. `sentinelRef`: A reference to the sentinel element used for observing scroll intersection.
- * 3. `sentinelStyle`: An object containing CSS styles for the sentinel element.
- */
 function useScrollThreshold(thresholdRatio = 0.3, pathname) {
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef(null);
 
   useEffect(() => {
     if (pathname !== "/" || !sentinelRef.current) {
-      // For non-home routes, always set scrolled to true
       setScrolled(true);
       return;
     }
-    setScrolled(false); // Reset on route change to "/"
+    setScrolled(false);
+
+    // ✅ Apply thresholdRatio using rootMargin
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // When sentinel is not intersecting viewport, user has scrolled past threshold
         setScrolled(!entry.isIntersecting);
       },
-      { threshold: 0 }
+      {
+        rootMargin: `-${thresholdRatio * 100}% 0px 0px 0px`,
+      }
     );
+
     observer.observe(sentinelRef.current);
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, thresholdRatio]);
 
   const sentinelStyle = {
     position: "absolute",
@@ -77,7 +56,7 @@ function useScrollThreshold(thresholdRatio = 0.3, pathname) {
 
 const Navbar = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
-  const [theme, setTheme] = useState(
+  const [theme] = useState(
     typeof window !== "undefined"
       ? localStorage.getItem("theme") || "light"
       : "light"
@@ -98,10 +77,6 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   useEffect(() => {
     document.body.style.overflow = overlayOpen ? "hidden" : "";
   }, [overlayOpen]);
@@ -113,37 +88,39 @@ const Navbar = () => {
     <>
       {pathname === "/" && <div ref={sentinelRef} style={sentinelStyle} />}
       <header
-        className={`fixed top-0 z-30 shadow-sm ${
+        className={`fixed top-0 z-30 shadow-sm transition-all duration-300 ${
           isTransparent
-            ? "bg-base-100/5 text-primary-content top-5 left-1/2 w-[70%] -translate-x-1/2 rounded-4xl"
+            ? "bg-base-100/5 text-primary-content w-full rounded-none md:top-5 md:left-1/2 md:w-[90%] md:-translate-x-1/2 md:rounded-4xl"
             : "bg-base-100 w-full shadow-md"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between px-6 py-7">
-          <div className="flex-1">
-            {/*<img*/}
-            {/*  src="/kinwits_logo.png"*/}
-            {/*  alt="Logo"*/}
-            {/*  className="ml-2 inline-block h-9 w-9"*/}
-            {/*/>*/}
-            <div className="text-2xl font-bold">KINWITS</div>
+        <div className="mx-auto flex w-full items-center justify-between px-8 py-6">
+          {/* Left: Logo */}
+          <div className="flex flex-1 justify-start">
+            <div
+              className={`text-2xl font-bold transition-colors duration-300 ${
+                isTransparent ? "text-white" : "text-accent"
+              }`}
+            >
+              KINWITS
+            </div>
           </div>
 
-          <nav className="hidden flex-1 justify-center space-x-8 font-medium md:flex">
+          {/* Center: Nav Links */}
+          <nav className="hidden flex-1 justify-center font-medium md:flex md:space-x-6 lg:space-x-10">
             {navigation.map((item, idx) => {
               const isActive = isNavItemActive(item, pathname);
               return (
                 <div key={idx}>
                   {item.type === "dropdown" ? (
                     <NavDropdownMenu
-                      key={idx}
                       label={item.name}
                       items={item.items}
                       isScrolled={isScrolled}
                       isActive={isActive}
                     />
                   ) : (
-                    <div key={idx} className="relative flex items-center">
+                    <div className="relative flex items-center">
                       <Link
                         to={item.to}
                         className={`hover:from-primary hover:to-accent transition-colors duration-300 ${
@@ -155,18 +132,16 @@ const Navbar = () => {
                         {item.name}
                       </Link>
                       {isActive && (
-                        <>
-                          <motion.span
-                            layoutId="nav-underline"
-                            className="from-primary to-primary animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
-                            transition={{
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 30,
-                            }}
-                            aria-hidden="true"
-                          />
-                        </>
+                        <motion.span
+                          layoutId="nav-underline"
+                          aria-hidden="true"
+                          className="from-primary to-primary animate-glow absolute -bottom-2 left-0 h-0.5 w-full rounded-xl bg-gradient-to-r"
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 30,
+                          }}
+                        />
                       )}
                     </div>
                   )}
@@ -175,29 +150,42 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="flex flex-1 items-center justify-end space-x-4">
-            {/*<label className="swap swap-rotate">*/}
-            {/*  <input*/}
-            {/*    type="checkbox"*/}
-            {/*    checked={theme === "dark"}*/}
-            {/*    onChange={toggleTheme}*/}
-            {/*  />*/}
-            {/*  <SunIcon className="swap-on h-5 w-5 text-yellow-500" />*/}
-            {/*  <MoonIcon className="swap-off h-5 w-5 text-yellow-400" />*/}
-            {/*</label>*/}
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setOverlayOpen(true)}
-              className="rounded-md border border-gray-300 p-2 md:hidden"
+          {/* Right: Desktop Buttons */}
+          <div className="hidden flex-1 items-center justify-end space-x-5 md:flex">
+            <Link
+              to="/cart"
+              className={`hover:bg-primary/10 rounded-full p-2 transition-colors ${
+                isTransparent ? "text-primary-content" : "text-base-content"
+              }`}
             >
-              <Menu className="h-5 w-5" />
-            </button>
+              <ShoppingCart className="h-5 w-5" />
+            </Link>
+            <Link
+              to="/contact"
+              className="btn btn-primary !px-5 !py-2 !text-sm"
+            >
+              Get in Touch
+            </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setOverlayOpen(true)}
+            aria-label="Open menu"
+            aria-controls="mobile-menu"
+            aria-expanded={overlayOpen}
+            className={`rounded-md border p-2 transition-colors md:hidden ${
+              isTransparent
+                ? "border-white text-white"
+                : "text-base-content border-gray-300"
+            }`}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
         </div>
       </header>
 
-      {/* Overlay Menu (mobile, tablet) */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {overlayOpen && (
           <>
@@ -216,14 +204,16 @@ const Navbar = () => {
               transition={{ type: "tween", duration: 0.3 }}
               className="bg-base-100 fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-sm flex-col shadow-xl"
             >
-              <div className="flex items-center justify-end p-4">
-                <button onClick={() => setOverlayOpen(false)}>
+              <div className="flex items-center justify-between p-4">
+                <h3 className="text-accent text-xl font-bold">KINWITS</h3>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setOverlayOpen(false)}
+                >
                   <X className="text-base-content h-6 w-6" />
                 </button>
               </div>
-              <h3 className="text-gradient-primary flex-center text-center">
-                KINWITS
-              </h3>
+
               <nav className="text-base-content flex flex-col space-y-4 p-6 text-lg font-medium">
                 {navigation.map((item, idx) => {
                   const isActive = isNavItemActive(item, pathname);
@@ -254,7 +244,9 @@ const Navbar = () => {
                                   key={sub.label}
                                   to={sub.to}
                                   onClick={() => setOverlayOpen(false)}
-                                  className={`${subActive ? "text-primary" : ""} pb-4`}
+                                  className={`${
+                                    subActive ? "text-primary" : ""
+                                  } pb-4`}
                                 >
                                   {sub.label}
                                 </Link>
@@ -277,6 +269,25 @@ const Navbar = () => {
                   );
                 })}
               </nav>
+
+              {/* Divider */}
+              <div className="mt-auto space-y-4 border-t border-gray-200 p-6">
+                <Link
+                  to="/cart"
+                  onClick={() => setOverlayOpen(false)}
+                  className="text-base-content hover:text-primary flex items-center gap-2"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  Cart
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setOverlayOpen(false)}
+                  className="btn btn-primary w-full !py-3 text-sm"
+                >
+                  Get in Touch
+                </Link>
+              </div>
             </motion.div>
           </>
         )}

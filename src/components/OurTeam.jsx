@@ -1,4 +1,12 @@
-import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Share2, Twitter, } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Share2,
+  Twitter,
+} from "lucide-react";
 import { useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,6 +52,11 @@ const team = [
 function TeamCard({ m }) {
   const [open, setOpen] = useState(false);
 
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setOpen((prev) => !prev);
+  };
+
   return (
     <div>
       <h4>{m.name}</h4>
@@ -51,20 +64,20 @@ function TeamCard({ m }) {
 
       <div
         className="group relative flex h-80 items-center justify-center overflow-hidden rounded-3xl bg-slate-100 shadow-sm ring-1 ring-black/5 md:h-96"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => setOpen(false)}
       >
         <img src={m.img} alt={m.name} className="h-full w-full object-cover" />
 
         <div className="absolute right-4 bottom-4">
           <div
-            onClick={() => setOpen((prev) => !prev)}
-            className={`bg-primary flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${
-              open ? "bg-secondary w-43 justify-between" : "w-11 justify-end"
-            } group-hover:bg-primary/80 group-hover:w-43 group-hover:justify-between`}
+            onClick={toggleMenu}
+            className={`bg-primary flex h-11 items-center gap-2 overflow-hidden rounded-2xl px-3 backdrop-blur transition-all duration-300 ease-in-out ${open ? "bg-secondary w-[10.75rem] justify-between" : "w-11 justify-end"} group-hover:bg-primary/80 group-hover:w-[10.75rem] group-hover:justify-between md:cursor-pointer`}
           >
             <div
               className={`flex items-center gap-2 transition-opacity duration-300 ${
-                open ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                open
+                  ? "opacity-100"
+                  : "opacity-0 group-hover:opacity-100 md:opacity-0"
               }`}
             >
               <a href="#" className="hover:text-light/50 text-light p-2">
@@ -81,7 +94,13 @@ function TeamCard({ m }) {
               </a>
             </div>
 
-            <Share2 className="text-light h-4 w-4 flex-shrink-0" />
+            <button
+              onClick={toggleMenu}
+              className="p-1"
+              aria-label="Toggle social media menu"
+            >
+              <Share2 className="text-light h-4 w-4 flex-shrink-0" />
+            </button>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ const PortfolioCard = ({ item }) => {
         alt={item.title}
         className="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      <div className="bg-accent/70 absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-end p-6 opacity-100 transition duration-500 md:inset-0 md:h-full lg:opacity-0 lg:group-hover:opacity-100">
+      <div className="bg-accent/50 absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-end p-6 opacity-100 transition duration-500 md:inset-0 md:h-full lg:opacity-0 lg:group-hover:opacity-100">
         <h3 className="text-xl font-semibold text-white">{item.title}</h3>
         <p className="mb-4 text-sm text-gray-300">{item.category}</p>
         <button className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 hover:bg-white/40">
