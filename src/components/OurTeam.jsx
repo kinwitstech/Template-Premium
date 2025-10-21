@@ -94,7 +94,11 @@ function TeamCard({ m }) {
               </a>
             </div>
 
-            <button onClick={toggleMenu} className="p-1">
+            <button
+              onClick={toggleMenu}
+              className="p-1"
+              aria-label="Toggle social media menu"
+            >
               <Share2 className="text-light h-4 w-4 flex-shrink-0" />
             </button>
           </div>

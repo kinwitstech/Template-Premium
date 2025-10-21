@@ -206,7 +206,10 @@ const Navbar = () => {
             >
               <div className="flex items-center justify-between p-4">
                 <h3 className="text-accent text-xl font-bold">KINWITS</h3>
-                <button onClick={() => setOverlayOpen(false)}>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setOverlayOpen(false)}
+                >
                   <X className="text-base-content h-6 w-6" />
                 </button>
               </div>
